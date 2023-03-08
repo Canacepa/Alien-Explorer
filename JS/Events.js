@@ -4,19 +4,17 @@ window.addEventListener('keydown', (event) => {
       case 'w':
       case 'ArrowUp':
           if (player.velocityY === 0) {
-              player.velocityY = -24
+              player.velocityY = -5
           }
           break;
       case 'd':
       case 'ArrowRight':
           rightPressed = true;
-          console.log('right')
           break;
       case 'q':
       case 'a':
       case 'ArrowLeft':
           leftPressed = true;
-          console.log('left')
           break;
   }
 })
@@ -29,7 +27,6 @@ window.addEventListener('keyup', (event) => {
       case 'a':
       case 'ArrowLeft':
           leftPressed = false;
-          console.log('left')
           break;
   }
 })

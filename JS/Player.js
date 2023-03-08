@@ -1,69 +1,104 @@
 class Player {
     constructor(collisionBlocks) {
-        this.width = 66;
-        this.height = 92;
-        this.positionX = 75;
-        this.positionY = 920;
+        this.position = {
+            x: 70,
+            y: 900,
+            width: 33,
+            height: 40,
+          }
         this.velocityX = 0;
         this.velocityY = 0;
-        this.gravity = 1
+        this.gravity = 0.1
         this.collisionBlocks = collisionBlocks
-        console.log(collisionBlocks[0])
-        if (this.collisionBlocks[0] === 'MapBlock'){console.log('true')}
+        this.image = new Image()
+        this.image.src = '../Img/Player.png'
+
     }
     draw(){
         c.fillStyle = 'purple'
-        c.fillRect(this.positionX, this.positionY, this.width, this.height)
+        c.fillRect(this.position.x, this.position.y, this.position.width, this.height)
+        c.drawImage(this.image, this.position.x, this.position.y, this.position.width, this.position.height)
     }
     update(){
-        this.positionX += this.velocityX
-        
-        // Horizontal
+        this.position.x += this.velocityX
+        this.horizontalCollision()
+        this.applyGravity()
+        this.verticalCollision()
+    }
+    applyGravity() {
+        this.velocityY += this.gravity
+        this.position.y += this.velocityY
+    }
+    horizontalCollision(){
         for (let i = 0; i< this.collisionBlocks.length; i++) {
             const collisionBlock = this.collisionBlocks[i]
-            if (this.positionX <= collisionBlock.position.x + collisionBlock.width &&
-                this.positionX + this.width >= collisionBlock.position.x &&
-                this.positionY + this.height >= collisionBlock.position.y &&
-                this.positionY <= collisionBlock.position.y + collisionBlock.height){
-                    if (this.velocityX < 0) {
-                        this.positionX = collisionBlock.position.x + collisionBlock.width +0.01
-                        break
-                    } 
-                    if (this.velocityX > 0){
-                        this.positionX = collisionBlock.position.x - this.width -0.01
-                        break
+            if (this.position.x <= collisionBlock.position.x + collisionBlock.width &&
+                this.position.x + this.position.width >= collisionBlock.position.x &&
+                this.position.y + this.position.height >= collisionBlock.position.y &&
+                this.position.y <= collisionBlock.position.y + collisionBlock.height){
+                    if (collisionBlock.type === 'Map'){
+                        if (this.velocityX < 0) {
+                            this.position.x = collisionBlock.position.x + collisionBlock.width +0.01
+                            break
+                        } 
+                        if (this.velocityX > 0){
+                            this.position.x = collisionBlock.position.x - this.position.width -0.01
+                            break
+                        }
+                    }
+                    if (collisionBlock.type === 'Exit') {
+                        console.log('Next lvl')
+                        level++
+                        levels[level].init()
                     }
 
                 }
 
         }
-
-        this.positionY += this.velocityY
-        if (this.positionY + this.height + this.velocityY < canvas.height) {
-            this.velocityY += this.gravity
-        } else {
-            this.velocityY = 0;
-        }
-
-        // Vertical
+    }
+    verticalCollision(){
         for (let i = 0; i< this.collisionBlocks.length; i++) {
             const collisionBlock = this.collisionBlocks[i]
-            if (this.positionX <= collisionBlock.position.x + collisionBlock.width &&
-                this.positionX + this.width >= collisionBlock.position.x &&
-                this.positionY + this.height >= collisionBlock.position.y &&
-                this.positionY <= collisionBlock.position.y + collisionBlock.height){
-                    // Horizontal
-                    if (this.velocityY < 0) {
-                        this.velocityY = 0
-                        this.positionY = collisionBlock.position.y + collisionBlock.height +0.01
-                        break
-                    } 
-                    if (this.velocityY > 0){
-                        this.velocityY = 0
-                        this.positionY = collisionBlock.position.y - this.height -0.01
-                        break
+            // console.log(collisionBlock.type)
+            if (this.position.x <= collisionBlock.position.x + collisionBlock.width &&
+                this.position.x + this.position.width >= collisionBlock.position.x &&
+                this.position.y + this.position.height >= collisionBlock.position.y &&
+                this.position.y <= collisionBlock.position.y + collisionBlock.height){
+                    if (collisionBlock.type === 'Map') {
+                        if (this.velocityY < 0) {
+                            this.velocityY = 0
+                            this.position.y = collisionBlock.position.y + collisionBlock.height +0.01
+                            break
+                        } 
+                        if (this.velocityY > 0){
+                            this.velocityY = 0
+                            this.position.y = collisionBlock.position.y - this.position.height -0.01
+                            break
+                        }
                     }
-
+                    if (collisionBlock.type === 'Pool') {
+                        if (this.velocityY < 0) {
+                            this.velocityY = 0
+                            this.position.y = collisionBlock.position.y + collisionBlock.height +0.01
+                            console.log('DEATH')
+                            break
+                        } 
+                        if (this.velocityY > 0){
+                            this.velocityY = 0
+                            this.position.y = collisionBlock.position.y - this.position.height -0.01
+                            console.log('DEATH')
+                            break
+                        }
+                    }
+                    // if (collisionBlock.type === 'Exit') {
+                    //     if (this.velocityY < 0) {
+                    //         console.log('Next lvl')
+                    //     } 
+                    //     if (this.velocityY > 0){
+                    //         console.log('Next lvl')
+                    //         level++
+                    //     }
+                    // }
                 }
         }
     }
