@@ -8,9 +8,18 @@
 body {
   background-color: #202830;
   display: flex;
-  align-content: center;
-  align-items: space-around;
+  justify-content: center;
+  align-content: space-around;
   justify-items: center;
   height: 100%;
   width: 100%;
+  flex-wrap: wrap;
+}
+
+.canvas {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 50%;
+
 }

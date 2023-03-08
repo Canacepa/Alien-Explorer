@@ -67,12 +67,12 @@ class PoolBlock {
     constructor({ position }) {
         this.position = position
         this.width = 70
-        this.height = 70
+        this.height = 50
     }
     
     draw() {
         c.fillStyle = 'rgba(0, 0, 255, 0.5)'
-        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        c.fillRect(this.position.x, this.position.y+20, this.width, this.height)
     }
 }
 class ExitBlock {
