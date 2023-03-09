@@ -68,6 +68,7 @@ let levels = {
                     width: 33,
                     height: 40,
                   },
+                  imageSrc : './Img/Player.png'
                 })
         }
     },
@@ -91,6 +92,7 @@ let levels = {
                     width: 33,
                     height: 40,
                   },
+                  imageSrc : './Img/Player.png'
                 })
         }
     },
@@ -114,6 +116,7 @@ let levels = {
                     width: 33,
                     height: 40,
                   },
+                  imageSrc : './Img/Player.png'
                 })
         }
     },
