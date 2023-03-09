@@ -1,1 +1,0 @@
-const bglevel1 = '.../Img/bgLvl1.png';

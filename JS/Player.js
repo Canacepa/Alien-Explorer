@@ -1,33 +1,45 @@
-class Player {
-    constructor(collisionBlocks) {
-        this.position = {
-            x: 70,
-            y: 900,
-            width: 33,
-            height: 40,
-          }
-        this.velocityX = 0;
-        this.velocityY = 0;
+class Player extends Sprite {
+    constructor({collisionBlocks, position}) {
+        super({position})
+        this.position = position
+        this.velocity = {
+            x : 0,
+            y : 0,
+        }
+        console.log(this.velocity)
         this.gravity = 0.1
         this.collisionBlocks = collisionBlocks
         this.image = new Image()
-        this.image.src = '../Img/Player.png'
+        this.image.src = './Img/Player.png'
 
     }
-    draw(){
-        c.fillStyle = 'purple'
-        c.fillRect(this.position.x, this.position.y, this.position.width, this.height)
-        c.drawImage(this.image, this.position.x, this.position.y, this.position.width, this.position.height)
-    }
+    // draw(){
+    //     c.fillStyle = 'purple'
+    //     c.fillRect(this.position.x, this.position.y, this.position.width, this.height)
+    //     c.drawImage(this.image, this.position.x, this.position.y, this.position.width, this.position.height)
+    // }
     update(){
-        this.position.x += this.velocityX
+        this.position.x += this.velocity.x
         this.horizontalCollision()
         this.applyGravity()
         this.verticalCollision()
     }
+    inputs() {
+        player.velocity.x = 0
+        if (rightPressed) {
+            this.image.src = './Img/WalkRight.gif'
+            player.velocity.x = 2
+            console.log(this.velocity)
+        } else if (leftPressed) {
+            player.velocity.x = -2
+            this.image.src = './Img/WalkLeft.gif'
+        } else {
+            this.image.src = './Img/Player.png'
+        }
+        }
     applyGravity() {
-        this.velocityY += this.gravity
-        this.position.y += this.velocityY
+        this.velocity.y += this.gravity
+        this.position.y += this.velocity.y
     }
     horizontalCollision(){
         for (let i = 0; i< this.collisionBlocks.length; i++) {
@@ -37,11 +49,11 @@ class Player {
                 this.position.y + this.position.height >= collisionBlock.position.y &&
                 this.position.y <= collisionBlock.position.y + collisionBlock.height){
                     if (collisionBlock.type === 'Map'){
-                        if (this.velocityX < 0) {
+                        if (this.velocity.x < 0) {
                             this.position.x = collisionBlock.position.x + collisionBlock.width +0.01
                             break
                         } 
-                        if (this.velocityX > 0){
+                        if (this.velocity.x > 0){
                             this.position.x = collisionBlock.position.x - this.position.width -0.01
                             break
                         }
@@ -51,7 +63,6 @@ class Player {
                         level++
                         levels[level].init()
                     }
-
                 }
 
         }
@@ -65,40 +76,47 @@ class Player {
                 this.position.y + this.position.height >= collisionBlock.position.y &&
                 this.position.y <= collisionBlock.position.y + collisionBlock.height){
                     if (collisionBlock.type === 'Map') {
-                        if (this.velocityY < 0) {
-                            this.velocityY = 0
+                        if (this.velocity.y < 0) {
+                            this.velocity.y = 0
                             this.position.y = collisionBlock.position.y + collisionBlock.height +0.01
                             break
                         } 
-                        if (this.velocityY > 0){
-                            this.velocityY = 0
+                        if (this.velocity.y > 0){
+                            this.velocity.y = 0
                             this.position.y = collisionBlock.position.y - this.position.height -0.01
                             break
                         }
                     }
                     if (collisionBlock.type === 'Pool') {
-                        if (this.velocityY < 0) {
-                            this.velocityY = 0
+                        if (this.velocity.y < 0) {
+                            this.velocity.y = 0
                             this.position.y = collisionBlock.position.y + collisionBlock.height +0.01
-                            console.log('DEATH')
+                            if (lives > 0){
+                                lives --
+                                levels[level].init()
+                                livesHUD[lives].init()
+                                starting = true
+                            } else {
+                                gameOverScreen()
+                                starting = true
+                            }
                             break
                         } 
-                        if (this.velocityY > 0){
-                            this.velocityY = 0
+                        if (this.velocity.y > 0){
+                            this.velocity.y = 0
                             this.position.y = collisionBlock.position.y - this.position.height -0.01
-                            console.log('DEATH')
+                            if (lives > 0){
+                                lives --
+                                levels[level].init()
+                                livesHUD[lives].init()
+                            } else {
+                                gameOverScreen()
+                                starting = true
+                            }
                             break
                         }
                     }
-                    // if (collisionBlock.type === 'Exit') {
-                    //     if (this.velocityY < 0) {
-                    //         console.log('Next lvl')
-                    //     } 
-                    //     if (this.velocityY > 0){
-                    //         console.log('Next lvl')
-                    //         level++
-                    //     }
-                    // }
+                    
                 }
         }
     }

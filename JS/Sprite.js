@@ -4,7 +4,6 @@ class Sprite {
         this.image = new Image()
         this.image.src = imageSrc
         this.loaded = false
-        console.log(this.image)
     }
     draw() {
         if (this.loaded) return

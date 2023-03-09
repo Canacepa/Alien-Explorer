@@ -3,9 +3,10 @@ window.addEventListener('keydown', (event) => {
       case 'z':
       case 'w':
       case 'ArrowUp':
-          if (player.velocityY === 0) {
-              player.velocityY = -5
+          if (player.velocity.y === 0) {
+              player.velocity.y = -5
           }
+          upPressed = true
           break;
       case 'd':
       case 'ArrowRight':
@@ -20,6 +21,11 @@ window.addEventListener('keydown', (event) => {
 })
 window.addEventListener('keyup', (event) => {
   switch (event.key){
+      case 'z':
+      case 'w':
+      case 'ArrowUp':
+          upPressed = false
+          break;
       case 'd':
       case 'ArrowRight':
           rightPressed = false;
@@ -28,5 +34,14 @@ window.addEventListener('keyup', (event) => {
       case 'ArrowLeft':
           leftPressed = false;
           break;
+      case ' ' :
+        if(starting){
+            level = 1
+            lives = 5
+            starting = false
+            levels[level].init()
+            livesHUD[lives].init()
+            animate()
+        }
   }
 })
