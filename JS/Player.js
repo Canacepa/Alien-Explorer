@@ -1,6 +1,6 @@
-class Player {
-    constructor({collisionBlocks, position}) {
-        super({position})
+class Player extends Sprite {
+    constructor({collisionBlocks, position, imageSrc}) {
+        super({position, imageSrc})
         this.position = position
         this.velocity = {
             x : 0,
@@ -9,14 +9,14 @@ class Player {
         this.gravity = 0.1
         this.collisionBlocks = collisionBlocks
         this.image = new Image()
-        this.image.src = './Img/Player.png'
+        this.image.src = imageSrc
 
     }
-    draw(){
-        c.fillStyle = 'purple'
-        c.fillRect(this.position.x, this.position.y, this.position.width, this.height)
-        c.drawImage(this.image, this.position.x, this.position.y, this.position.width, this.position.height)
-    }
+    // draw(){
+    //     c.fillStyle = 'purple'
+    //     c.fillRect(this.position.x, this.position.y, this.position.width, this.height)
+    //     c.drawImage(this.image, this.position.x, this.position.y, this.position.width, this.position.height)
+    // }
     update(){
         this.position.x += this.velocity.x
         this.horizontalCollision()
@@ -30,9 +30,9 @@ class Player {
             player.velocity.x = 2
         } else if (leftPressed) {
             player.velocity.x = -2
-        //     this.image.src = './Img/WalkLeft.gif'
-        // } else {
-        //     this.image.src = './Img/Player.png'
+            this.image.src = './Img/WalkLeft.gif'
+        } else {
+            this.image.src = './Img/Player.png'
         }
         }
     applyGravity() {

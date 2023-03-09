@@ -35,7 +35,7 @@ let levels = {
                     width : 1800,
                     height : 1125,
                 },
-                imageSrc : '../Img/Level1.png',
+                imageSrc : './Img/Level1.png',
             })
             player = new Player({collisionBlocks,
                 position : {
@@ -44,6 +44,7 @@ let levels = {
                     width: 33,
                     height: 40,
                   },
+                imageSrc : './Img/Player.png'
                 })
         }
     },
