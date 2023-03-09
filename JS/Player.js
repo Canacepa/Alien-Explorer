@@ -27,13 +27,13 @@ class Player extends Sprite {
     inputs() {
         player.velocity.x = 0
         if (rightPressed) {
-            this.image.src = './Img/WalkRight.gif'
+            // this.image.src = './Img/WalkRight.gif'
             player.velocity.x = 2
         } else if (leftPressed) {
             player.velocity.x = -2
-            this.image.src = './Img/WalkLeft.gif'
-        } else {
-            this.image.src = './Img/Player.png'
+        //     this.image.src = './Img/WalkLeft.gif'
+        // } else {
+        //     this.image.src = './Img/Player.png'
         }
         }
     applyGravity() {
