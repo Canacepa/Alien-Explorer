@@ -1,5 +1,14 @@
-let life 
+const sky = new Sprite ({
+    position: {
+        x: 0,
+        y: 0,
+        width : 1800,
+        height : 1125,
+    },
+    imageSrc : './Img/Sky.png' ,
+})
 
+let life 
 let livesHUD = {
     0 : {
         init() {
@@ -10,7 +19,7 @@ let livesHUD = {
                     width : 265,
                     height : 45,
                 },
-                imageSrc : './Img/lives.png',
+                imageSrc : '../Img/lives.png',
             })
         }
     },
@@ -23,7 +32,7 @@ let livesHUD = {
                     width : 265,
                     height : 45,
                 },
-                imageSrc : './Img/lives1.png',
+                imageSrc : '../Img/lives1.png',
             })
         }
     },
@@ -36,7 +45,7 @@ let livesHUD = {
                     width : 265,
                     height : 45,
                 },
-                imageSrc : './Img/lives2.png',
+                imageSrc : '../Img/lives2.png',
             })
         }
     },
@@ -49,7 +58,7 @@ let livesHUD = {
                     width : 265,
                     height : 45,
                 },
-                imageSrc : './Img/lives3.png',
+                imageSrc : '../Img/lives3.png',
             })
         }
     },
@@ -62,7 +71,7 @@ let livesHUD = {
                     width : 265,
                     height : 45,
                 },
-                imageSrc : './Img/lives4.png',
+                imageSrc : '../Img/lives4.png',
             })
         }
     },
@@ -100,4 +109,14 @@ let gameOver = new Sprite ({
         height : 1125,
     },
     imageSrc : './Img/KO.png',
+})
+
+let gameEnd = new Sprite ({
+    position: {
+        x: 0,
+        y: 0,
+        width : 1800,
+        height : 1125,
+    },
+    imageSrc : './Img/End.png',
 })

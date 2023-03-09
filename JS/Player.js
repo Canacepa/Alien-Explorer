@@ -29,7 +29,6 @@ class Player extends Sprite {
         if (rightPressed) {
             this.image.src = './Img/WalkRight.gif'
             player.velocity.x = 2
-            console.log(this.velocity)
         } else if (leftPressed) {
             player.velocity.x = -2
             this.image.src = './Img/WalkLeft.gif'
@@ -58,10 +57,39 @@ class Player extends Sprite {
                             break
                         }
                     }
+                    if (collisionBlock.type === 'Death'){
+                        if (this.velocity.x < 0) {
+                            this.position.x = collisionBlock.position.x + collisionBlock.width +0.01
+                            if (lives > 0){
+                                lives --
+                                levels[level].init()
+                                livesHUD[lives].init()
+                            } else {
+                                gameOverScreen()
+                                gameInnactive = true
+                            }
+                            break
+                        } 
+                        if (this.velocity.x > 0){
+                            this.position.x = collisionBlock.position.x - this.position.width -0.01
+                            if (lives > 0){
+                                lives --
+                                levels[level].init()
+                                livesHUD[lives].init()
+                            } else {
+                                gameOverScreen()
+                                gameInnactive = true
+                            }
+                            break
+                        }
+                    }
                     if (collisionBlock.type === 'Exit') {
                         console.log('Next lvl')
                         level++
                         levels[level].init()
+                    }
+                    if (collisionBlock.type === 'End') {
+                        gameFinish()
                     }
                 }
 
@@ -87,7 +115,7 @@ class Player extends Sprite {
                             break
                         }
                     }
-                    if (collisionBlock.type === 'Pool') {
+                    if (collisionBlock.type === 'Death') {
                         if (this.velocity.y < 0) {
                             this.velocity.y = 0
                             this.position.y = collisionBlock.position.y + collisionBlock.height +0.01
@@ -95,10 +123,9 @@ class Player extends Sprite {
                                 lives --
                                 levels[level].init()
                                 livesHUD[lives].init()
-                                starting = true
                             } else {
                                 gameOverScreen()
-                                starting = true
+                                gameInnactive = true
                             }
                             break
                         } 
@@ -111,10 +138,13 @@ class Player extends Sprite {
                                 livesHUD[lives].init()
                             } else {
                                 gameOverScreen()
-                                starting = true
+                                gameInnactive = true
                             }
                             break
                         }
+                    }
+                    if (collisionBlock.type === 'End') {
+                        gameFinish()
                     }
                     
                 }

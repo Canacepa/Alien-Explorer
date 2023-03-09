@@ -35,10 +35,12 @@ window.addEventListener('keyup', (event) => {
           leftPressed = false;
           break;
       case ' ' :
-        if(starting){
+        if(gameInnactive){
             level = 1
             lives = 5
-            starting = false
+            gameInnactive = false
+            gameStarted =  true
+            time.start()
             levels[level].init()
             livesHUD[lives].init()
             animate()
