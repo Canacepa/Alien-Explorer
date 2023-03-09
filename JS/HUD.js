@@ -19,7 +19,7 @@ let livesHUD = {
                     width : 265,
                     height : 45,
                 },
-                imageSrc : '../Img/lives.png',
+                imageSrc : './Img/lives.png',
             })
         }
     },
@@ -32,7 +32,7 @@ let livesHUD = {
                     width : 265,
                     height : 45,
                 },
-                imageSrc : '../Img/lives1.png',
+                imageSrc : './Img/lives1.png',
             })
         }
     },
@@ -45,7 +45,7 @@ let livesHUD = {
                     width : 265,
                     height : 45,
                 },
-                imageSrc : '../Img/lives2.png',
+                imageSrc : './Img/lives2.png',
             })
         }
     },
@@ -58,7 +58,7 @@ let livesHUD = {
                     width : 265,
                     height : 45,
                 },
-                imageSrc : '../Img/lives3.png',
+                imageSrc : './Img/lives3.png',
             })
         }
     },
@@ -71,7 +71,7 @@ let livesHUD = {
                     width : 265,
                     height : 45,
                 },
-                imageSrc : '../Img/lives4.png',
+                imageSrc : './Img/lives4.png',
             })
         }
     },
