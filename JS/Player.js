@@ -1,4 +1,4 @@
-class Player extends Sprite {
+class Player {
     constructor({collisionBlocks, position}) {
         super({position})
         this.position = position
@@ -6,18 +6,17 @@ class Player extends Sprite {
             x : 0,
             y : 0,
         }
-        console.log(this.velocity)
         this.gravity = 0.1
         this.collisionBlocks = collisionBlocks
         this.image = new Image()
         this.image.src = './Img/Player.png'
 
     }
-    // draw(){
-    //     c.fillStyle = 'purple'
-    //     c.fillRect(this.position.x, this.position.y, this.position.width, this.height)
-    //     c.drawImage(this.image, this.position.x, this.position.y, this.position.width, this.position.height)
-    // }
+    draw(){
+        c.fillStyle = 'purple'
+        c.fillRect(this.position.x, this.position.y, this.position.width, this.height)
+        c.drawImage(this.image, this.position.x, this.position.y, this.position.width, this.position.height)
+    }
     update(){
         this.position.x += this.velocity.x
         this.horizontalCollision()
