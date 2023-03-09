@@ -61,7 +61,7 @@ Array.prototype.createObjectsFrom2D = function () {
             })
             )
         }  
-            else if (symbol === 228) {
+            else if (symbol === 232) {
                 objects.push(
             new EndBlock({
                 position: {
@@ -86,7 +86,7 @@ class MapBlock {
     }
     
     draw() {
-        c.fillStyle = 'rgba(255, 0, 0, 0.2)'
+        c.fillStyle = 'rgba(255, 0, 0, 0)'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
@@ -100,7 +100,7 @@ class PoolBlock {
     }
     
     draw() {
-        c.fillStyle = 'rgba(0, 0, 255, 0.5)'
+        c.fillStyle = 'rgba(0, 0, 255, 0)'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
@@ -113,7 +113,7 @@ class SpikeLBlock {
     }
     
     draw() {
-        c.fillStyle = 'rgba(0, 255, 255, 0.5)'
+        c.fillStyle = 'rgba(0, 255, 255, 0)'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
@@ -126,7 +126,7 @@ class SpikeRBlock {
     }
     
     draw() {
-        c.fillStyle = 'rgba(0, 255, 255, 0.5)'
+        c.fillStyle = 'rgba(0, 255, 255, 0)'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
@@ -139,7 +139,7 @@ class ExitBlock {
     }
     
     draw() {
-        c.fillStyle = 'rgba(0, 255, 0, 0.5)'
+        c.fillStyle = 'rgba(0, 255, 0, 0)'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
@@ -152,7 +152,7 @@ class EndBlock {
     }
     
     draw() {
-        c.fillStyle = 'rgba(255, 255, 0, 0.5)'
+        c.fillStyle = 'rgba(255, 255, 0, 0)'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }

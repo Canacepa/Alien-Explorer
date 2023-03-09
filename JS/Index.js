@@ -20,9 +20,6 @@ let player
 let level
 let lives
 
-let bestTime
-
-
 let levels = {
     1 : {
         init() {
@@ -40,7 +37,7 @@ let levels = {
             player = new Player({collisionBlocks,
                 position : {
                     x: 70,
-                    y: 900,
+                    y: 250,
                     width: 33,
                     height: 40,
                   },
@@ -88,7 +85,7 @@ let levels = {
             player = new Player({collisionBlocks,
                 position : {
                     x: 70,
-                    y: 250,
+                    y: 900,
                     width: 33,
                     height: 40,
                   },
@@ -111,8 +108,32 @@ let levels = {
             })
             player = new Player({collisionBlocks,
                 position : {
+                    x: 70,
+                    y: 1000,
+                    width: 33,
+                    height: 40,
+                  },
+                  imageSrc : './Img/Player.png'
+                })
+        }
+    },
+    5 : {
+        init() {
+            parsedCollisions = level5.parse2D(),
+            collisionBlocks =  parsedCollisions.createObjectsFrom2D()
+            background = new Sprite ({
+                position: {
+                    x: 0,
+                    y: 0,
+                    width : 1800,
+                    height : 1125,
+                },
+                imageSrc : './Img/Level5.png',
+            })
+            player = new Player({collisionBlocks,
+                position : {
                     x: 900,
-                    y: 100,
+                    y: 1000,
                     width: 33,
                     height: 40,
                   },
@@ -122,9 +143,6 @@ let levels = {
     },
 }
 
-let time = new Chronometer()
-
-time.draw()
 
 function animate(){
     if (gameInnactive) return
@@ -146,7 +164,6 @@ function startScreen() {
     window.requestAnimationFrame(startScreen)
     sky.draw()
     start.draw()
-    time.draw()
 }
 function gameOverScreen() {
     window.requestAnimationFrame(startScreen)

@@ -40,7 +40,6 @@ window.addEventListener('keyup', (event) => {
             lives = 5
             gameInnactive = false
             gameStarted =  true
-            time.start()
             levels[level].init()
             livesHUD[lives].init()
             animate()
