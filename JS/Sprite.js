@@ -3,7 +3,6 @@ class Sprite {
 		this.position = position;
 		this.image = new Image();
 		this.image.src = imageSrc;
-		console.log(imageSrc);
 	}
 	draw() {
 		c.drawImage(

@@ -85,7 +85,6 @@ class Player extends Sprite {
 					}
 				}
 				if (collisionBlock.type === "Exit") {
-					console.log("Next lvl");
 					level++;
 					levels[level].init();
 				}
@@ -98,7 +97,6 @@ class Player extends Sprite {
 	verticalCollision() {
 		for (let i = 0; i < this.collisionBlocks.length; i++) {
 			const collisionBlock = this.collisionBlocks[i];
-			// console.log(collisionBlock.type)
 			if (
 				this.position.x <= collisionBlock.position.x + collisionBlock.width &&
 				this.position.x + this.position.width >= collisionBlock.position.x &&
