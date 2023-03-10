@@ -10,7 +10,7 @@ You'll need to around and get to the door.
 
 # Demo
 
-[Aliens explorer](https://bytewarriors-ironhack-feb-23.github.io/bytewarriors-oop-game-codealong/)
+[Aliens explorer](https://canacepa.github.io/platformer/)
 
 <br>
 
