@@ -18,6 +18,8 @@ You'll need to around and get to the door.
 
 Move player with arrow keys, WASD or ZQSD
 
+<br>
+
 # Objectives
 
 ## MVP
@@ -31,8 +33,8 @@ Move player with arrow keys, WASD or ZQSD
 ### 2 - You can die !
 
 - [x] Add some ways to die <br>
-... - [x] Lava/water pools <br>
-... - [ ] Enemies <br>
+... Lava/water pools <br>
+... Enemies <br>
 
 ### 3 - Levels
 
@@ -45,9 +47,9 @@ Move player with arrow keys, WASD or ZQSD
 ## Improvements
 
 - [x] Add some screens <br>
-... [x] Starting <br>
-... [x] Game Over <br>
-... [x] Finished game <br>
+... Starting <br>
+... Game Over <br>
+... Finished game <br>
 
 - [ ] Add sounds
 
